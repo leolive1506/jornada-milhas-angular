@@ -35,3 +35,7 @@ export const environment = {
 import { environment } from 'src/environments/environment';
 private apiURL: string = environment.apiURL
 ```
+
+# Dicas
+## sharedReplay
+Permite armazenar em cache o resultado de um Observable
