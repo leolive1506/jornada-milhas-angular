@@ -33,8 +33,20 @@
     <div class="selecao-categoria">
       <p><strong>Categoria</strong></p>
       <mat-chip-listbox aria-label="Seleção de passagens">
-        <mat-chip-option selected>1 adulto</mat-chip-option>
-        <mat-chip-option>Econômica</mat-chip-option>
+        <mat-chip-option
+          value="economica"
+          [selected]="form.get('tipo')?.value === 'economica'"
+          (selectionChange)="alterarTipo($event)"
+        >
+          Econômica
+        </mat-chip-option>
+        <mat-chip-option
+          value="executiva"
+          [selected]="form.get('tipo')?.value === 'executiva'"
+          (selectionChange)="alterarTipo($event)"
+        >
+          Executiva
+        </mat-chip-option>
       </mat-chip-listbox>
     </div>
   </div>

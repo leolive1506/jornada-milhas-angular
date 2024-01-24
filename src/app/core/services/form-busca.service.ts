@@ -14,7 +14,8 @@ export class FormBuscaService {
     this.formBusca = new FormGroup({
       somenteIda: new FormControl(false),
       origem: new FormControl(''),
-      destino: new FormControl('')
+      destino: new FormControl(''),
+      tipo: new FormControl('economica')
     })
   }
 
@@ -30,5 +31,11 @@ export class FormBuscaService {
     this.dialog.open(ModalComponent, {
       width: '50%'
     });
+  }
+
+  alterarTipo(tipo: 'economica' | 'executiva') {
+    this.formBusca.patchValue({
+      tipo
+    })
   }
 }
