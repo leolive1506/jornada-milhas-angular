@@ -10,8 +10,11 @@ ng add @angular/material
 # - 3. adicionar tipografia
 # - 4. se quer incluir animações
 ```
-
-# providedIn
+# Serviços Singleton
+Responsabilidade de fornecer funcionalidades específicas e compartilhadas em toda a aplicação
+uma única instância de um serviço em toda a aplicação
+- útil em casos como gerenciamento de recursos compartilhados, acesso a bancos de dados, configurações globais
+## para configurar basta em providedIn
 - root
   - pra toda aplicação, há somente uma instancia do serviço
   - nome desse projeto chama-se Singleton
