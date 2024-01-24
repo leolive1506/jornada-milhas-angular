@@ -1,7 +1,8 @@
 import { UnidadeFederativaService } from './../../core/services/unidade-federativa.service';
 import { Component, OnInit } from '@angular/core';
+import { DepoimentoService } from 'src/app/core/services/depoimento.service';
 import { PromocaoService } from 'src/app/core/services/promocao.service';
-import { Promocao, UnidadeFederativa } from 'src/app/core/types/type';
+import { Depoimento, Promocao, UnidadeFederativa } from 'src/app/core/types/type';
 
 @Component({
   selector: 'app-home',
@@ -10,20 +11,20 @@ import { Promocao, UnidadeFederativa } from 'src/app/core/types/type';
 })
 export class HomeComponent implements OnInit{
   promocoes: Promocao[]
-  states: UnidadeFederativa[]
+  depoimentos: Depoimento[]
+
   constructor(
-    private service: PromocaoService,
-    private unidadeFederativaService: UnidadeFederativaService
+    private promocaoService: PromocaoService,
+    private depoimentoService: DepoimentoService
   ) {
   }
 
   ngOnInit(): void {
-    this.service.listar().subscribe(lista => {
+    this.promocaoService.listar().subscribe(lista => {
       this.promocoes = lista
     })
-    this.unidadeFederativaService.listar().subscribe(lista => {
-      this.states = lista
-      console.log(lista)
+    this.depoimentoService.listar().subscribe(lista => {
+      this.depoimentos = lista
     })
   }
 }
