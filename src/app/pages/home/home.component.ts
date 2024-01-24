@@ -1,8 +1,7 @@
-import { UnidadeFederativaService } from './../../core/services/unidade-federativa.service';
 import { Component, OnInit } from '@angular/core';
 import { DepoimentoService } from 'src/app/core/services/depoimento.service';
 import { PromocaoService } from 'src/app/core/services/promocao.service';
-import { Depoimento, Promocao, UnidadeFederativa } from 'src/app/core/types/type';
+import { Depoimento, Promocao } from 'src/app/core/types/type';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +14,7 @@ export class HomeComponent implements OnInit{
 
   constructor(
     private promocaoService: PromocaoService,
-    private depoimentoService: DepoimentoService
+    private depoimentoService: DepoimentoService,
   ) {
   }
 

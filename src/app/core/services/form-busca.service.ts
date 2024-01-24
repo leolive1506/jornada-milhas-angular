@@ -13,4 +13,12 @@ export class FormBuscaService {
       destino: new FormControl('')
     })
   }
+
+  getFormControl(nome: string): FormControl {
+    const control = this.formBusca.get('origem');
+    if (!control) {
+      throw new Error(`FormControl ${nome} not found`)
+    }
+    return control as FormControl
+  }
 }
