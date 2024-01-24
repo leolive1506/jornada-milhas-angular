@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import { FormBuscaService } from 'src/app/core/services/form-busca.service';
@@ -8,7 +8,7 @@ import { FormBuscaService } from 'src/app/core/services/form-busca.service';
   templateUrl: './form-busca.component.html',
   styleUrls: ['./form-busca.component.scss']
 })
-export class FormBuscaComponent {
+export class FormBuscaComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public formBuscaService: FormBuscaService
@@ -18,6 +18,11 @@ export class FormBuscaComponent {
     this.dialog.open(ModalComponent, {
       width: '50%'
     });
+  }
+
+  ngOnInit(): void {
+    this.formBuscaService.formBusca.controls['origem'];
+    this.formBuscaService.formBusca.valueChanges.subscribe(console.log);
   }
 
 }

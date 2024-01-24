@@ -8,7 +8,9 @@ export class FormBuscaService {
   formBusca: FormGroup
   constructor() {
     this.formBusca = new FormGroup({
-      somenteIda: new FormControl(false)
+      somenteIda: new FormControl(false),
+      origem: new FormControl(''),
+      destino: new FormControl('')
     })
   }
 }

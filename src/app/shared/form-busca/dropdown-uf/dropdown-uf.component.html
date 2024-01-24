@@ -1,9 +1,15 @@
-<mat-form-field
-  appearance="outline"
-  class="input-container"
->
+<mat-form-field appearance="outline" class="input-container" [formGroup]="form.formBusca">
   <mat-label>{{ label }}</mat-label>
   <mat-icon matPrefix>{{ iconPrefix }}</mat-icon>
-  <input matInput placeholder="{{ label }}">
+  <input matInput placeholder="{{ label }}" [matAutocomplete]="auto" [formControlName]="name">
   <mat-icon matSuffix>search</mat-icon>
+
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    <mat-option
+      *ngFor="let option of filteredOptions | async"
+      [value]="option.sigla"
+    >
+        {{ option.nome  }} - {{ option.sigla }}
+    </mat-option>
+  </mat-autocomplete>
 </mat-form-field>
