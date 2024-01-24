@@ -15,7 +15,10 @@ export class FormBuscaService {
       somenteIda: new FormControl(false),
       origem: new FormControl(''),
       destino: new FormControl(''),
-      tipo: new FormControl('economica')
+      tipo: new FormControl('economica'),
+      adultos: new FormControl(1),
+      criancas: new FormControl(2),
+      bebes: new FormControl(1)
     })
   }
 
@@ -37,5 +40,26 @@ export class FormBuscaService {
     this.formBusca.patchValue({
       tipo
     })
+  }
+
+  getDescricaoPassageiros(): string {
+    let descricao = ''
+    const total = {
+      adulto: this.formBusca.get('adultos')?.value,
+      criaca: this.formBusca.get('criancas')?.value,
+      bebe: this.formBusca.get('bebes')?.value
+    }
+
+    const keys = Object.keys(total)
+    keys.forEach(key => {
+      if (total[key]) {
+        const concat = descricao ? ', ' : ''
+        const label = total[key] > 1 ? `${key}s` : key
+
+        descricao += `${concat} ${total[key]} ${label}`
+      }
+    })
+
+    return descricao
   }
 }
