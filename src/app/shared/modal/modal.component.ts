@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatChipOption, MatChipSelectionChange } from '@angular/material/chips';
 import { FormBuscaService } from 'src/app/core/services/form-busca.service';
 
@@ -22,6 +22,10 @@ export class ModalComponent implements OnInit {
     if (event.selected) {
       this.formBuscaService.alterarTipo(event.source.value)
     }
+  }
+
+  getFormControl(input: string): FormControl {
+    return this.formBuscaService.getFormControl(input)
   }
 }
 

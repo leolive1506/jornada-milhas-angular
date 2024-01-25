@@ -5,14 +5,17 @@
       <app-seletor-passageiro
         titulo="Adultos"
         subtitulo="(Acima de 12 anos)"
+        [formControl]="getFormControl('adultos')"
       ></app-seletor-passageiro>
       <app-seletor-passageiro
         titulo="Crianças"
         subtitulo="(Entre 2 e 11 anos)"
+        [formControl]="getFormControl('criancas')"
       ></app-seletor-passageiro>
       <app-seletor-passageiro
         titulo="Bebês"
         subtitulo="(Até 2 anos)"
+        [formControl]="getFormControl('bebes')"
       ></app-seletor-passageiro>
     </div>
     <div class="selecao-categoria">

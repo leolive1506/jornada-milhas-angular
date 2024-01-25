@@ -17,13 +17,13 @@ export class FormBuscaService {
       destino: new FormControl(''),
       tipo: new FormControl('economica'),
       adultos: new FormControl(1),
-      criancas: new FormControl(2),
-      bebes: new FormControl(1)
+      criancas: new FormControl(0),
+      bebes: new FormControl(0)
     })
   }
 
   getFormControl(nome: string): FormControl {
-    const control = this.formBusca.get('origem');
+    const control = this.formBusca.get(nome);
     if (!control) {
       throw new Error(`FormControl ${nome} not found`)
     }
@@ -61,5 +61,9 @@ export class FormBuscaService {
     })
 
     return descricao
+  }
+
+  getTipoText() {
+    return this.getFormControl('tipo').value === 'economica' ? 'Econômica' : 'Executiva'
   }
 }

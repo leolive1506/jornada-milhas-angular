@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ModalComponent } from '../modal/modal.component';
 import { FormBuscaService } from 'src/app/core/services/form-busca.service';
 
 @Component({
@@ -14,8 +12,20 @@ export class FormBuscaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.formBuscaService.formBusca.controls['origem'];
-    this.formBuscaService.formBusca.valueChanges.subscribe(console.log);
+    // this.formBuscaService.formBusca.valueChanges.subscribe(console.log);
   }
 
+  buscar() {
+    console.log(this.formBuscaService.formBusca.value)
+  }
+
+  changeOrigemDestino() {
+    const origem = this.formBuscaService.getFormControl('origem').value
+    const destino = this.formBuscaService.getFormControl('destino').value
+
+    this.formBuscaService.formBusca.patchValue({
+      origem: destino,
+      destino: origem
+    })
+  }
 }

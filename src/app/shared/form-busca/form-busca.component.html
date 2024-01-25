@@ -1,5 +1,5 @@
 <app-card variant="secondary" class="form-busca">
-  <form [formGroup]="formBuscaService.formBusca">
+  <form [formGroup]="formBuscaService.formBusca" (ngSubmit)="buscar()">
     <h2>Passagens</h2>
     <div class="flex-container">
       <mat-button-toggle-group name="fontStyle" aria-label="Tipo de passagem" formControlName="somenteIda">
@@ -19,13 +19,13 @@
       </mat-chip>
       <mat-chip (click)="formBuscaService.openDialog()">
         <div class="inner">
-          <mat-icon>check</mat-icon> Econômica
+          <mat-icon>check</mat-icon> {{ formBuscaService.getTipoText() }}
         </div>
       </mat-chip>
     </div>
     <div class="flex-container">
       <app-dropdown-uf [input]="formBuscaService.getFormControl('origem')" label="Origem" iconPrefix="flight_takeoff"></app-dropdown-uf>
-      <button type="button" mat-icon-button>
+      <button type="button" mat-icon-button (click)="changeOrigemDestino()">
         <mat-icon>sync_alt</mat-icon>
       </button>
       <app-dropdown-uf [input]="formBuscaService.getFormControl('destino')" label="Destino" iconPrefix="flight_land"></app-dropdown-uf>
