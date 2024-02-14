@@ -12,7 +12,9 @@ import { FormValidation } from '../form-validation';
 export class FormBaseUserComponent implements OnInit {
   form: FormGroup
   @Input() perfilComponent: boolean
+  @Input() title = 'Crie sua conta'
   @Output() onSubmitForm = new EventEmitter<any>()
+  @Output() onLogout = new EventEmitter<any>()
 
 
   constructor(private formService: FormUserService) {
@@ -37,6 +39,14 @@ export class FormBaseUserComponent implements OnInit {
     this.form.get('confirmarEmail').valueChanges.subscribe(value => {
       console.log(this.form.get('confirmarEmail').errors)
     })
+
+    if (this.perfilComponent) {
+      this.form.get('aceitarTermos').setValidators(null)
+    } else {
+      this.form.get('aceitarTermos').setValidators([Validators.requiredTrue])
+    }
+
+    this.form.get('aceitarTermos').updateValueAndValidity()
   }
 
 
@@ -51,5 +61,9 @@ export class FormBaseUserComponent implements OnInit {
 
   executar() {
     this.onSubmitForm.emit()
+  }
+
+  logout() {
+    this.onLogout.emit()
   }
 }

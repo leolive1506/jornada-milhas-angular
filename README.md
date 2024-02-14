@@ -74,6 +74,11 @@ const isEvenValidator: ValidatorFn = (control: FormControl) => {
 const numberControl: FormControl = new FormControl('', isEvenValidator);
 
 ```
+
+# Autenticação
+```sh
+npm i jwt-decode
+```
 # Dicas
 ## sharedReplay
 Permite armazenar em cache o resultado de um Observable

@@ -1,0 +1,2 @@
+<app-banner src="assets/imagens/banner-perfil.png" alt="Banner da tela de Perfil"></app-banner>
+<app-form-base-user [perfilComponent]="true" (onLogout)="logout()" (onSubmitForm)="update()" [title]="'Olá ' + user?.nome"></app-form-base-user>

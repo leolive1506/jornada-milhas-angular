@@ -38,6 +38,7 @@ import { SeletorPassageiroComponent } from './shared/seletor-passageiro/seletor-
 import { LoginComponent } from './pages/login/login.component';
 import { FormBaseUserComponent } from './shared/form-base-user/form-base-user.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { RegisterComponent } from './pages/register/register.component';
     SeletorPassageiroComponent,
     LoginComponent,
     FormBaseUserComponent,
-    RegisterComponent
+    RegisterComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
