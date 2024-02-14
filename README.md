@@ -47,6 +47,33 @@ private apiURL: string = environment.apiURL
 3. **registerOnTouched(fn: any):** Este método é usado para registrar uma função de retorno de chamada que será chamada pelo componente personalizado quando ele for tocado ou sofrer uma alteração no estado de foco. O componente deve chamar essa função sempre que ocorrer uma interação com ele, como um clique ou foco.
 4. **setDisabledState(isDisabled: boolean):** Este método é usado para definir o estado de desabilitado do componente personalizado com base no valor fornecido pelo formulário. O componente deve atualizar sua visualização e comportamento de acordo com o estado de desabilitado.
 
+# AbstractControl, FormControl, FormGroup e ValidatorFn
+## AbstractControl
+Classe abstrata que serve como a classe base para os controles de formulário
+- encapsula os comportamentos e propriedades comuns a todos os tipos de controles
+
+## Form control
+Representa controle de formulário individual
+- Extends AbstractControl e adiciona metodos e propriedades especificos para manipular um único controle
+
+## ValidatorFn
+Tipo de função que define uma validação personalizada
+```ts
+import { FormControl, ValidatorFn } from '@angular/forms';
+
+// Criando uma validação personalizada que verifica se o valor é um número par
+const isEvenValidator: ValidatorFn = (control: FormControl) => {
+  const value: number = control.value;
+  if (value % 2 !== 0) {
+    return { isEven: true };
+  }
+  return null;
+};
+
+// Usando a validação personalizada em um controle de formulário
+const numberControl: FormControl = new FormControl('', isEvenValidator);
+
+```
 # Dicas
 ## sharedReplay
 Permite armazenar em cache o resultado de um Observable

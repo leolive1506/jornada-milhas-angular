@@ -23,15 +23,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 import { ModalComponent } from './shared/modal/modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { BotaoControleComponent } from './shared/botao-controle/botao-controle.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DropdownUfComponent } from './shared/form-busca/dropdown-uf/dropdown-uf.component';
+import { DropdownUfComponent } from './shared/dropdown-uf/dropdown-uf.component';
 import { SeletorPassageiroComponent } from './shared/seletor-passageiro/seletor-passageiro.component';
 import { LoginComponent } from './pages/login/login.component';
+import { FormBaseUserComponent } from './shared/form-base-user/form-base-user.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 @NgModule({
@@ -50,7 +56,9 @@ import { LoginComponent } from './pages/login/login.component';
     BotaoControleComponent,
     DropdownUfComponent,
     SeletorPassageiroComponent,
-    LoginComponent
+    LoginComponent,
+    FormBaseUserComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +76,9 @@ import { LoginComponent } from './pages/login/login.component';
     MatNativeDateModule,
     MatDialogModule,
     MatAutocompleteModule,
+    MatRadioModule,
+    MatDividerModule,
+    MatCheckboxModule,
     HttpClientModule,
     ReactiveFormsModule
   ],

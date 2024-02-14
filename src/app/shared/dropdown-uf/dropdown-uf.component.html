@@ -1,13 +1,13 @@
 <mat-form-field appearance="outline" class="input-container">
   <mat-label>{{ label }}</mat-label>
-  <mat-icon matPrefix>{{ iconPrefix }}</mat-icon>
+  <mat-icon *ngIf="iconPrefix" matPrefix>{{ iconPrefix }}</mat-icon>
   <input matInput placeholder="{{ label }}" [matAutocomplete]="auto" [formControl]="input">
   <mat-icon matSuffix>search</mat-icon>
 
-  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+  <mat-autocomplete [displayWith]="displayFn" autoActiveFirstOption #auto="matAutocomplete">
     <mat-option
       *ngFor="let option of filteredOptions | async"
-      [value]="option.sigla"
+      [value]="option"
     >
         {{ option.nome  }} - {{ option.sigla }}
     </mat-option>
