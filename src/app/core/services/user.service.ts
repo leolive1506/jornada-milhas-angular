@@ -3,7 +3,7 @@ import { TokenService } from './token.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { PessoaUsuario } from '../types/type';
 import { jwtDecode } from 'jwt-decode';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -54,18 +54,10 @@ export class UserService {
   }
 
   details(): Observable<PessoaUsuario> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.token}`
-    })
-
-    return this.http.get<PessoaUsuario>(`${this.apiUrl}/auth/perfil`, { headers })
+    return this.http.get<PessoaUsuario>(`${this.apiUrl}/auth/perfil`)
   }
 
   update(data: PessoaUsuario): Observable<PessoaUsuario> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.token}`
-    })
-
-    return this.http.patch<PessoaUsuario>(`${this.apiUrl}/auth/perfil`, data, { headers })
+    return this.http.patch<PessoaUsuario>(`${this.apiUrl}/auth/perfil`, data)
   }
 }

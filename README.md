@@ -79,6 +79,47 @@ const numberControl: FormControl = new FormControl('', isEvenValidator);
 ```sh
 npm i jwt-decode
 ```
+
+## Interceptor
+- interceptar e manipular requisições
+```sh
+ng g interceptor core/interceptors/auth
+```
+```ts
+// auth.interceptor
+export class AuthInterceptor implements HttpInterceptor {
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    if (this.tokenService.hasToken()) {
+      const token = this.tokenService.token
+
+      request = request.clone({
+        setHeaders: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+    }
+
+    return next.handle(request);
+  }
+}
+```
+```ts
+// app.module
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+
+@NgModule({
+  declarations: [],
+  imports: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+```
 # Dicas
 ## sharedReplay
 Permite armazenar em cache o resultado de um Observable
